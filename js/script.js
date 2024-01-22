@@ -8,20 +8,29 @@ const app = createApp ({
         return {
             pics,
             picIndex: 0,
-            target: null,
         }
     },
-    /*computed {
-
-    },*/
+    computed: {
+        lastPic (){
+            return this.pics.length - 1;
+        },
+        isLastPic () {
+            return this.picIndex === this.lastPic;
+        },
+        isFirstPic () {
+            return this.picIndex === 0;
+        }
+    },
     methods: {
         changePic(target) {
             if (target === "next"){
-                this.picIndex++
-            } else if  (target === "prev") {
-                this.picIndex--
+                if(this.isLastPic) this.picIndex = 0
+                else this.picIndex++;
+            } else if (target === "prev") {
+                if(this.isFirstPic) this.picIndex = this.lastPic
+                else this.picIndex--;
             } else {
-                picIndex === i
+                this.picIndex = target
             }
         }
     }
