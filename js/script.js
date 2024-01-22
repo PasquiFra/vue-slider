@@ -33,6 +33,9 @@ const app = createApp ({
                 this.picIndex = target
             }
         }
+    },
+    mounted() {
+        setInterval(() => {this.changePic("next")},3000)
     }
 })
 
