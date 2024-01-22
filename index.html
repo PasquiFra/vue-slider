@@ -33,26 +33,26 @@
         <div class="container">
             <div id="carousel">
             <!-- Prev button -->
-            <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
+            <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button" v-on:click="prevPic"></i>
 
             <!-- Gallery -->
             <div class="gallery">
-                <figure class="active">
+                <figure v-for="(pic, i) in pics" v-show="picIndex === i">
                 <figcaption>
-                    <h2 v-text=""></h2>
-                    <h3>Scandinavia's blend of nature and innovation.</h3>
+                    <h2>{{pic.name}}</h2>
+                    <h3>{{pic.description}}</h3>
                 </figcaption>
-                <img src="img/01.jpg" alt="Svezia">
+                <img :src="`img/${pic.image}`" :alt="pic.name">
                 </figure>
             </div>
 
             <!-- next button -->
-            <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
+            <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button" v-on:click="nextPic"></i>
             </div>
 
             <!-- Thumbnails -->
-            <div id="thumbnails">
-            <img v-for="pic in pics" :src="`img/${pic.image}`" :alt="{Svezia}" class="active">
+            <div id="thumbnails"> 
+            <img v-for="(pic, i) in pics" :src="`img/${pic.image}`" :alt="pic.name" :class="{active: picIndex === i}">
             </div>
 
             <!-- <div class="autoplay-controls">
