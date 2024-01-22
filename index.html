@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  
+  <title>Carousel Example</title>
 
   <link rel="icon" href="./img/favicon.ico" type="icon" />
 
@@ -19,6 +19,9 @@
   <!-- Style -->
   <link rel="stylesheet" href="./style/style.css" />
 
+  <!-- Vue JS cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  
   <!-- JavaScript -->
   <script src="js/data.js"></script>
   <script defer src="./js/script.js"></script>
@@ -26,36 +29,37 @@
 </head>
 
 <body>
+    <div id="root">
+        <div class="container">
+            <div id="carousel">
+            <!-- Prev button -->
+            <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
 
-  <div class="container">
-    <div id="carousel">
-      <!-- Prev button -->
-      <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
+            <!-- Gallery -->
+            <div class="gallery">
+                <figure class="active">
+                <figcaption>
+                    <h2 v-text=""></h2>
+                    <h3>Scandinavia's blend of nature and innovation.</h3>
+                </figcaption>
+                <img src="img/01.jpg" alt="Svezia">
+                </figure>
+            </div>
 
-      <!-- Gallery -->
-      <div class="gallery">
-        <figure class="active">
-          <figcaption>
-            <h2>Svezia</h2>
-            <h3>Scandinavia's blend of nature and innovation.</h3>
-          </figcaption>
-          <img src="img/01.jpg" alt="Svezia">
-        </figure>
-      </div>
+            <!-- next button -->
+            <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
+            </div>
 
-      <!-- next button -->
-      <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
+            <!-- Thumbnails -->
+            <div id="thumbnails">
+            <img v-for="pic in pics" :src="`img/${pic.image}`" :alt="{Svezia}" class="active">
+            </div>
+
+            <!-- <div class="autoplay-controls">
+            <button id="autoplay-button">STOP AUTOPLAY</button>
+            </div> -->
+        </div>
     </div>
-
-    <!-- Thumbnails -->
-    <div id="thumbnails">
-      <img src="img/01.jpg" alt="Svezia" class="active">
-    </div>
-
-    <!-- <div class="autoplay-controls">
-      <button id="autoplay-button">STOP AUTOPLAY</button>
-    </div> -->
-  </div>
 </body>
 
 </html>
